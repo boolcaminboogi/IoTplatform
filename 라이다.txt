@@ -1,0 +1,102 @@
+my rosject 'aaa'
+<라이다>
+
+# CMD 1: Simulator 실행
+$ export TURTLEBOT3_MODEL=waffle_pi
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+# CMD2: Teleop 실행 (Lidar 센서 데이터가 변화하는지 확인하기 위함)
+$ export TURTLEBOT3_MODEL=waffle_pi
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+
+$ vi catkin_ws/src/turtlebot3/turtlebot3/get_lidar.py
+
+
+ \catkin_ws\src\turtlebot3\turtlebot3\get_lidar.py
+
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+import rospy
+from sensor_msgs.msg import LaserScan
+from std_msgs.msg import Int32
+from std_msgs.msg import Header
+
+class lidar_receiver:
+    def __init__(self):
+        self.lidar_sub = rospy.Subscriber("/scan", LaserScan, self.callback)
+        #self.stop_pub = rospy.Publisher("/warning", Int32, queue_size=5)
+
+    def callback(self, data):  # rosmsg show sensor_msgs/LaserScan에 나온 변수들을 사용가능
+        if data.ranges[0] < 1.0:
+            print("warning")
+        else:
+            print("safe")
+        print(len(data.ranges))
+
+def run():
+    rospy.init_node("lidar_sub", anonymous=True)
+    lidar_receiver_a = lidar_receiver()
+    rospy.spin()
+
+
+if __name__ == "__main__":
+    run()
+
+
+
+##############################
+cd ~/catkin_ws/src/turtlebot3/turtlebot3
+ls
+chmod +x ./get_lidar.py
+ls-l
+rosrun ./get_lidar.py
+ls
+rosrun turtlebot3 ./get_lidar.py
+rosrun turtlebot3 get_lidar.py
+
+
+
+
+
+
+
+
+#################################
+조교님코드
+
+# CMD 1: Simulator 실행
+$ export TURTLEBOT3_MODEL=waffle_pi
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+# CMD2: Teleop 실행 (Lidar 센서 데이터가 변화하는지 확인하기 위함)
+$ export TURTLEBOT3_MODEL=waffle_pi
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+import rospy
+from sensor_msgs.msg import LaserScan
+from std_msgs.msg import Int32
+from std_msgs.msg import Header
+
+class lidar_receiver:
+    def __init__(self):
+        self.lidar_sub = rospy.Subscriber("/scan", LaserScan, self.callback)
+        #self.stop_pub = rospy.Publisher("/warning", Int32, queue_size=5)
+
+    def callback(self, data):  # rosmsg show sensor_msgs/LaserScan에 나온 변수들을 사용가능
+        if data.ranges[0] < 1.0:
+            print("warning")
+        else:
+            print("safe")
+        print(len(data.ranges))
+
+def run():
+    rospy.init_node("lidar_sub", anonymous=True)
+    lidar_receiver_a = lidar_receiver()
+    rospy.spin()
+
+
+if __name__ == "__main__":
+    run()

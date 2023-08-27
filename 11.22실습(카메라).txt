@@ -1,0 +1,33 @@
+11.22 실습
+<카메라>
+aaa시뮬레이션
+
+#CMD1(시뮬레이션 환경 생성)
+export TURTLEBOT3_MODEL=waffle_pi
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+
+#CMD2(teleoperator 실행)
+export TURTLEBOT3_MODEL=waffle_pi
+roslaunch turtlebot3_teleop tutlebot3_teleop_key.launch
+
+
+#CMD3(데이터 pub확인을 위한 rviz생성)
+export TURTLEBOT3_MODEL=waffle_pi
+roslaunch turtlebot3_gazebo tutlebot3_gazebo_rviz.launch
+
+
+#CMD4(ros topic확인)
+rostopic list
+
+
+#CMD5
+#turtlebot3/turtlebot3에 get_camera.py 코드 생성(vi명령어 or vs code 활용)
+#vs code로 get_camera.code 수정(el참조)
+cd ~/catkin_ws/src/turtlebot3/turtlebot3
+ls
+chmod +x ./get_camera.py
+rosrun ./get_camera.py
+ls
+rosrun turtlebot3 ./get_camera.py
+

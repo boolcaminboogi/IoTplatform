@@ -1,0 +1,50 @@
+the constructsim 사이트
+ros basics in 5days(python)
+
+[명령어]
+roslaunch bb_8_teleop keyboard_teleop.launch
+	패키지		명령
+
+roslaunch publisher_example move.launch
+
+rosrun rviz rviz
+	-fixed frame->
+	-add -> robot
+	-add->laserscan->topic
+
+cd catkin_ws/src
+catkin_create_pkg my_lecture std_msgs roscpp
+
+roscd my_lecture/
+ls	파일안에 뭐가 들어있는지
+
+package.xml
+mkdir msg
+ls
+cd msg
+ls
+(catkin_ws/src/my_lecture/msg$) vi time_msg.msg
+
+cd ..	 msg 나가기
+cd src
+vi pub.py
+	아무 글자
+	esc->:wq		저장 후 나가기
+vi sub.py
+	"
+	"
+
+
+확장자 변환
+mv pub.py pub.cpp
+mv sub.py sub.cpp
+
+
+cd ~/catkin_ws && catkin_make
+source devel/setup.bash
+roscd my_lecture
+rosrun my_lecture pub (창1)
+rosrun my_lecture pub (창2)
+
+
+

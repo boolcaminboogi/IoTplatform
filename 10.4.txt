@@ -1,0 +1,16 @@
+https://emanual.robotis.com/docs/en/platform/turtlebot3/sbc_setup/#sbc-setup
+
+turtlebot3 e-manual 사이트
+SBC Setup
+Raspberry Pi 3B+다운로드
+Raspberry Pi 4B 다운로드(sd 카드 있을 경우에만)
+
+Raspberry Pi Imager 다운로드
+
+윈도우 라즈베리파이 다운로드
+
+<라즈베리파이>
+os 선택 - tb3~ .zip
+storage 선택 - sd카드
+write
+

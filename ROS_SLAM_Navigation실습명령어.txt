@@ -1,0 +1,32 @@
+5주차 ROS SLAM/Navigation 실습 명령어
+-- Simulation, msgs, turtlebot ROS package 설치 --
+
+1. cd ~/catkin_ws/src
+2. git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+3. git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+4. git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+5. cd ~/catkin_ws && catkin_make
+
+-- gazebo turtlebot3_world 실행 (Simulation Env) -- 
+
+6. export TURTLEBOT3_MODEL=burger
+7. roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+--SLAM node 실행 -- 
+
+8. export TURTLEBOT3_MODEL=burger
+9. roslaunch turtlebot3_slam turtlebot3_slam.launch
+
+-- Control (teleoperation) node 실행 --
+
+10. export TURTLEBOT3_MODEL=burger
+11. roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+-- SLAM을 통해 생성된 MAP 저장 --
+
+12. rosrun map_server map_saver -f ~/map
+
+-- 저장된 맵을 기반으로 Navigation 실행 --
+
+13. export TURTLEBOT3_MODEL=burger
+14. roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
